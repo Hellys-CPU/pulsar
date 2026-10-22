@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulsar · curiosidades de tecnologia</title>
+<meta name="description" content="Curiosidades de tecnologia em pulsos curtos, sempre com fonte: o LED azul, o primeiro bug, o primeiro código de barras. Podcast e vídeos. Uma marca do grupo Plêiade.">
+<meta name="theme-color" content="#08070d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pulsar">
+<meta property="og:title" content="Pulsar · curiosidades de tecnologia">
+<meta property="og:description" content="A história por trás do que você usa todo dia, em pulsos curtos e sempre com fonte. Uma marca do grupo Plêiade.">
+<meta property="og:url" content="https://hellys-cpu.github.io/pulsar/">
+<meta property="og:image" content="https://hellys-cpu.github.io/pulsar/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PULSAR, curiosidades de tecnologia, sobre um pulsar com linhas de pulso empilhadas">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308070d'/%3E%3Cpath d='M16 16 25.5 2.5 29.5 6.5Z M16 16 6.5 29.5 2.5 25.5Z' fill='%23e4ff3a'/%3E%3Ccircle cx='16' cy='16' r='4.6' fill='%23e4ff3a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="pular" href="#pulsos">Pular para as curiosidades</a>
+
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="Pulsar, voltar ao início">
+    <svg class="marca-icone" viewBox="0 0 32 32" aria-hidden="true">
+      <g class="marca-feixes"><path d="M16 16 25.5 2.5 29.5 6.5Z M16 16 6.5 29.5 2.5 25.5Z"/></g>
+      <circle cx="16" cy="16" r="4.6"/>
+    </svg>
+    <span class="marca-nome">Pulsar</span>
+  </a>
+  <nav class="menu" aria-label="Seções">
+    <a href="#pulsos">Pulsos</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#sobre">Quem faz</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+    <canvas class="hero-ceu" aria-hidden="true"></canvas>
+    <div class="hero-texto">
+      <p class="kicker">PSR B1919+21 · pisca a cada 1,337 s</p>
+      <h1 id="hero-titulo" class="palavra">
+        <span class="sr">Pulsar</span>
+        <span class="letras" aria-hidden="true"><span style="--i:0">P</span><span style="--i:1">U</span><span style="--i:2">L</span><span style="--i:3">S</span><span style="--i:4">A</span><span style="--i:5">R</span></span>
+      </h1>
+      <p class="lead">Curiosidades de tecnologia em pulsos curtos. A história por trás do que você usa todo dia, <mark>sempre com fonte</mark>.</p>
+      <div class="acoes">
+        <a class="botao botao-cheio" href="#pulsos">Ver os pulsos</a>
+        <a class="botao botao-vazado" href="#podcast">Ouvir o podcast</a>
+      </div>
+      <div class="hero-rodape">
+        <p class="contador">Desde que você chegou, o primeiro pulsar já piscou <b data-contador>0</b> <span data-vezes>vezes</span>. <a href="#pulso-007">Que pulsar?</a></p>
+        <button class="som" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path class="som-ondas" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span data-som-rotulo>Ouvir o pulso</span>
+        </button>
+      </div>
+    </div>
+    <p class="dica" aria-hidden="true">clique no céu pra mandar um pulso</p>
+  </section>
+
+  <div class="faixas" aria-hidden="true">
+    <div class="faixa faixa-a"><div class="faixa-trilho">
+      <span>LED azul ✦ primeiro bug ✦ código de barras ✦ GPS e Einstein ✦ o primeiro site ✦ por que @ ✦ o primeiro pulsar ✦ </span><span>LED azul ✦ primeiro bug ✦ código de barras ✦ GPS e Einstein ✦ o primeiro site ✦ por que @ ✦ o primeiro pulsar ✦ </span>
+    </div></div>
+    <div class="faixa faixa-b"><div class="faixa-trilho">
+      <span>sempre com fonte ✦ curto mas certo ✦ lenda é lenda ✦ ouça ✦ leia ✦ assista ✦ </span><span>sempre com fonte ✦ curto mas certo ✦ lenda é lenda ✦ ouça ✦ leia ✦ assista ✦ </span>
+    </div></div>
+  </div>
+
+  <section class="secao" id="pulsos" aria-labelledby="pulsos-titulo">
+    <div class="secao-topo revela">
+      <p class="kicker">01 · Pulsos</p>
+      <h2 id="pulsos-titulo" class="titulo">Curiosidades que <em>piscam</em></h2>
+      <p class="sub">Uma por card. Toque pra abrir; a fonte fica no fim de cada uma.</p>
+      <button class="botao botao-cheio surpresa" type="button">Me surpreenda</button>
+    </div>
+
+    <ol class="cards">
+      <li class="card revela" id="pulso-001" style="--cor: var(--raio)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #001</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-001-corpo">Por que um LED azul valeu um Nobel?</button></h3>
+          <p class="card-gancho">Vermelho e verde já existiam. Faltava o azul, e sem ele não tinha luz branca de LED.</p>
+        </div>
+        <div class="card-corpo" id="pulso-001-corpo"><div>
+          <p>Os LEDs vermelhos existem desde os anos 1960, e os verdes vieram depois. O azul resistiu por uns 30 anos: o material certo, o nitreto de gálio, era dificílimo de cristalizar com qualidade.</p>
+          <p>Entre o fim dos anos 1980 e o começo dos 1990, Isamu Akasaki e Hiroshi Amano, em Nagoya, e Shuji Nakamura, na Nichia, uma empresa química pequena do Japão, conseguiram. Com o azul, dá pra fazer luz branca: é só cobrir o LED com um fósforo amarelo. Daí vieram as lâmpadas de LED e a luz por trás de muita tela que você usa.</p>
+          <p>Os três levaram o Nobel de Física de 2014, pela invenção do LED azul eficiente.</p>
+          <p class="fonte">Fonte: <a href="https://www.nobelprize.org/prizes/physics/2014/press-release/" target="_blank" rel="noopener">comunicado do Prêmio Nobel de Física de 2014</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-002" style="--cor: var(--pulso)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #002</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-002-corpo">O primeiro bug era um inseto de verdade?</button></h3>
+          <p class="card-gancho">Em 1947, uma mariposa travou um computador. E foi colada no caderno de bordo.</p>
+        </div>
+        <div class="card-corpo" id="pulso-002-corpo"><div>
+          <p>Em 9 de setembro de 1947, a equipe do Harvard Mark II achou uma mariposa presa no relé 70 do painel F. Ela foi colada no diário de operação, com a anotação “First actual case of bug being found”: o primeiro caso de um bug de verdade.</p>
+          <p>A piada só funciona porque engenheiros já chamavam defeito de “bug” desde o século 19. Dessa vez, era literal. Grace Hopper trabalhava nessa equipe e adorava contar a história, mas o próprio Smithsonian diz que o caderno provavelmente não era dela.</p>
+          <p>A página, com a mariposa, está no Museu Nacional de História Americana, em Washington.</p>
+          <p class="fonte">Fontes: <a href="https://www.si.edu/object/log-book-computer-bug:nmah_334663" target="_blank" rel="noopener">Smithsonian</a> · <a href="https://daily.jstor.org/the-bug-in-the-computer-bug-story/" target="_blank" rel="noopener">JSTOR Daily</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-003" style="--cor: var(--choque)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #003</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-003-corpo">Qual foi o primeiro produto vendido com código de barras?</button></h3>
+          <p class="card-gancho">Um pacote de chiclete. Custou 67 centavos de dólar.</p>
+        </div>
+        <div class="card-corpo" id="pulso-003-corpo"><div>
+          <p>Às 8h01 de 26 de junho de 1974, no mercado Marsh de Troy, em Ohio (EUA), um pacote com 10 chicletes Juicy Fruit passou pelo leitor. Foi a primeira compra registrada com o código UPC, aquele das barras pretas e brancas que até hoje está em quase tudo.</p>
+          <p>O pacote custou US$ 0,67 e foi parar no Smithsonian.</p>
+          <p class="fonte">Fontes: <a href="https://en.wikipedia.org/wiki/Universal_Product_Code" target="_blank" rel="noopener">Wikipedia (UPC)</a> · <a href="https://www.hmdb.org/m.asp?m=252408" target="_blank" rel="noopener">placa histórica em Troy (HMdb)</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-004" style="--cor: var(--brasa)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #004</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-004-corpo">O GPS precisa do Einstein pra funcionar?</button></h3>
+          <p class="card-gancho">Os relógios dos satélites andam mais rápido que os nossos. E isso tem conta.</p>
+        </div>
+        <div class="card-corpo" id="pulso-004-corpo"><div>
+          <p>Os satélites do GPS voam a uns 20 mil km de altura, a quase 4 km por segundo. Pela relatividade restrita, a velocidade atrasa os relógios deles em uns 7 microssegundos por dia. Pela relatividade geral, a gravidade mais fraca lá em cima adianta em uns 45. Saldo: 38 microssegundos por dia a mais.</p>
+          <p>Parece nada, mas o GPS calcula distância pelo tempo que o sinal leva pra chegar, e a luz anda uns 11 km em 38 microssegundos. Por isso os relógios saem da Terra já ajustados pra compensar.</p>
+          <p class="fonte">Fonte: <a href="https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit5/gps.html" target="_blank" rel="noopener">Richard Pogge, Ohio State University</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-005" style="--cor: var(--raio)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #005</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-005-corpo">O primeiro site do mundo ainda está no ar?</button></h3>
+          <p class="card-gancho">Está. E dá pra abrir agora mesmo.</p>
+        </div>
+        <div class="card-corpo" id="pulso-005-corpo"><div>
+          <p>A web nasceu no CERN, o laboratório europeu de física de partículas, com Tim Berners-Lee. Em 2013, o CERN colocou de volta, no endereço original, uma cópia de 1992 da primeira página: a que explicava o próprio projeto World Wide Web. Só texto e link, nenhuma imagem.</p>
+          <p>Vale a visita: <a href="http://info.cern.ch/hypertext/WWW/TheProject.html" target="_blank" rel="noopener">info.cern.ch</a>.</p>
+          <p class="fonte">Fonte: <a href="https://www.w3.org/community/webhistory/2013/04/03/restoring-the-first-website" target="_blank" rel="noopener">W3C, “Restoring the first website”</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-006" style="--cor: var(--choque)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #006</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-006-corpo">Por que todo <span class="junto">e-mail</span> tem um @?</button></h3>
+          <p class="card-gancho">Foi a escolha rápida de um engenheiro, em 1971.</p>
+        </div>
+        <div class="card-corpo" id="pulso-006-corpo"><div>
+          <p>Em 1971, Ray Tomlinson mandou a primeira mensagem entre dois computadores pela ARPANET, a rede que deu origem à internet. As duas máquinas estavam lado a lado, na mesma sala.</p>
+          <p>Ele precisava separar o nome da pessoa do nome do computador e escolheu o @, um símbolo pouco usado que em inglês se lê “at” (em): fulano @ máquina. E o que dizia a mensagem? Nem ele lembrava; contou que devia ser algo como QWERTYUIOP.</p>
+          <p class="fonte">Fonte: <a href="https://www.computinghistory.org.uk/det/1787/Ray-Tomlinson/" target="_blank" rel="noopener">Centre for Computing History</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-007" style="--cor: var(--pulso)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #007</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-007-corpo">Por que este site se chama Pulsar?</button></h3>
+          <p class="card-gancho">Em 1967, uma estudante achou um sinal tão certinho que o apelidaram de “homenzinhos verdes”.</p>
+        </div>
+        <div class="card-corpo" id="pulso-007-corpo"><div>
+          <p>Jocelyn Bell, doutoranda em Cambridge orientada por Antony Hewish, notou no papel do radiotelescópio um sinal que piscava a cada 1,337 segundo, sem falhar. Era tão regular que a fonte ganhou o apelido LGM-1, de <i>Little Green Men</i>.</p>
+          <p>Não eram alienígenas: era uma estrela de nêutrons girando e varrendo o espaço com feixes de rádio, como um farol. Nascia a palavra pulsar. Hewish dividiu o Nobel de Física de 1974; ela ficou de fora. Em 2018, ela ganhou o Breakthrough Prize, de US$ 3 milhões, e doou tudo para bolsas de doutorado em física para grupos sub-representados.</p>
+          <p>O feixe que gira no topo desta página pisca no ritmo desse pulsar.</p>
+          <p class="fonte">Fontes: <a href="https://public.nrao.edu/tick-tock-pulsating-star/" target="_blank" rel="noopener">NRAO</a> · <a href="https://ras.ac.uk/news-and-press/news/professor-jocelyn-bell-burnell-wins-special-breakthrough-prize" target="_blank" rel="noopener">Royal Astronomical Society</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card revela" id="pulso-008" style="--cor: var(--brasa)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #008</span>
+          <h3 class="card-titulo"><button type="button" aria-expanded="false" aria-controls="pulso-008-corpo">Que capa de disco famosa é um gráfico de astronomia?</button></h3>
+          <p class="card-gancho">Aquelas linhas brancas empilhadas? São pulsos de rádio.</p>
+        </div>
+        <div class="card-corpo" id="pulso-008-corpo"><div>
+          <p>A capa de <i>Unknown Pleasures</i>, do Joy Division (1979), mostra 80 pulsos seguidos do CP 1919: o mesmo pulsar da Jocelyn Bell. O gráfico saiu da tese de doutorado de Harold Craft, de 1970, e o designer Peter Saville achou a imagem numa enciclopédia de astronomia.</p>
+          <p>Virou estampa de camiseta no mundo inteiro. As linhas no topo deste site são uma homenagem: desenhadas por código, ao vivo, no ritmo do pulsar.</p>
+          <p class="fonte">Fontes: <a href="https://www.scientificamerican.com/blog/sa-visual/pop-culture-pulsar-origin-story-of-joy-division-s-unknown-pleasures-album-cover-video/" target="_blank" rel="noopener">Scientific American</a> · <a href="https://bigthink.com/strange-maps/known-pleasures-from-pulsar-signal-to-post-punk-icon/" target="_blank" rel="noopener">Big Think</a></p>
+          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+        </div></div>
+        <span class="card-mais" aria-hidden="true">+</span>
+      </li>
+
+      <li class="card convite revela" style="--cor: var(--pulso)">
+        <div class="card-cabeca">
+          <span class="card-num">Pulso #009</span>
+          <h3 class="card-titulo"><a href="mailto:guilherme.hellys1@gmail.com?subject=Curiosidade%20para%20a%20Pulsar">O próximo pode ser seu</a></h3>
+          <p class="card-gancho">Manda uma curiosidade com fonte. Se a conta fechar, vira pulso, com crédito pra você.</p>
+        </div>
+        <span class="card-mais" aria-hidden="true">→</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="secao podcast" id="podcast" aria-labelledby="podcast-titulo">
+    <div class="secao-topo revela">
+      <p class="kicker">02 · Podcast</p>
+      <h2 id="podcast-titulo" class="titulo">Podcast <em>Pulsar</em></h2>
+      <p class="sub">Tecnologia e carreira em episódios de 15 a 20 minutos. As vozes são geradas por IA. Ele nasceu dentro da <a href="https://hellys.dev.br/#podcast" target="_blank" rel="noopener">hellys.</a>, a marca de tecnologia do grupo, e por isso também toca no site dela.</p>
+    </div>
+
+    <div class="player revela" data-estado="parado">
+      <div class="player-palco">
+        <canvas class="player-onda" aria-hidden="true"></canvas>
+        <button class="player-play" type="button" aria-label="Ouvir episódio">
+          <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8A1 1 0 0 0 8 5.2z" fill="currentColor"/></svg>
+          <svg class="ic-pausa" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <div class="player-info">
+        <div class="player-selos">
+          <span class="selo">voz gerada por IA</span>
+          <span class="player-ep" data-ep>EP 01 / 04</span>
+        </div>
+        <h3 class="player-titulo" data-titulo>Harvard ou as trincheiras do código</h3>
+        <input class="player-barra" type="range" min="0" max="1216" step="1" value="0" aria-label="Posição no episódio" aria-valuetext="0:00 de 20:16">
+        <div class="player-controles">
+          <button class="player-pular" type="button" data-pular="-15" aria-label="Voltar 15 segundos">−15</button>
+          <span class="player-tempo"><b data-atual>0:00</b> / <span data-total>20:16</span></span>
+          <button class="player-pular" type="button" data-pular="15" aria-label="Avançar 15 segundos">+15</button>
+          <button class="player-vel" type="button" aria-label="Velocidade: 1×">1×</button>
+        </div>
+        <p class="player-aviso" role="status"></p>
+      </div>
+
+      <ol class="episodios">
+        <li><button class="ep" type="button" aria-current="true" data-src="https://hellys.dev.br/audio/harvard-ou-as-trincheiras-do-codigo.m4a" data-dur="1216.2"><span class="ep-n">01</span><span class="ep-titulo">Harvard ou as trincheiras do código</span><span class="ep-meta">20:16 · formação · prática</span></button></li>
+        <li><button class="ep" type="button" data-src="https://hellys.dev.br/audio/testes-de-algoritmos-nao-medem-competencia-real.m4a" data-dur="1084.9"><span class="ep-n">02</span><span class="ep-titulo">Testes de algoritmos não medem competência real</span><span class="ep-meta">18:04 · algoritmos · carreira</span></button></li>
+        <li><button class="ep" type="button" data-src="https://hellys.dev.br/audio/arquitetura-web-do-html-ao-deploy.m4a" data-dur="1008.7"><span class="ep-n">03</span><span class="ep-titulo">Arquitetura web: do HTML ao deploy</span><span class="ep-meta">16:48 · web · HTML · deploy</span></button></li>
+        <li><button class="ep" type="button" data-src="https://hellys.dev.br/audio/react-ou-html-puro-para-iniciantes.m4a" data-dur="937.4"><span class="ep-n">04</span><span class="ep-titulo">React ou HTML puro para iniciantes</span><span class="ep-meta">15:37 · React · HTML · iniciantes</span></button></li>
+      </ol>
+    </div>
+    <audio class="player-audio" preload="none" crossorigin="anonymous"></audio>
+  </section>
+
+  <section class="secao videos" id="videos" aria-labelledby="videos-titulo">
+    <div class="videos-grade">
+      <div class="secao-topo revela">
+        <p class="kicker">03 · Vídeos</p>
+        <h2 id="videos-titulo" class="titulo">30 segundos. <em>No talo.</em></h2>
+        <p class="sub">Cada pulso vira um vídeo curto, animado com IA e revisado por gente, com a mesma fonte do card. Os primeiros chegam em breve no Instagram e no TikTok.</p>
+        <p class="sub">Na tela do celular, uma prévia do estilo com o roteiro do LED azul.</p>
+      </div>
+      <figure class="celular revela">
+        <div class="celular-tela">
+          <div class="barrinhas" aria-hidden="true"></div>
+          <div class="quadro" aria-hidden="true"></div>
+          <span class="celular-selo" aria-hidden="true">prévia do estilo</span>
+        </div>
+        <button class="celular-pausa" type="button">Pausar prévia</button>
+        <figcaption class="sr">Prévia animada do estilo dos vídeos: frases curtas em cores fortes contando a história do LED azul, do vermelho e verde até o Nobel de 2014.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="secao sobre" id="sobre" aria-labelledby="sobre-titulo">
+    <div class="secao-topo revela">
+      <p class="kicker">04 · Quem faz</p>
+      <h2 id="sobre-titulo" class="titulo">Feita pelo <em>grupo</em> inteiro</h2>
+      <p class="sub">A Pulsar é a marca de curiosidades do grupo Plêiade. Não tem dono único: qualquer pessoa do grupo pode puxar um pulso, gravar um episódio ou montar um vídeo. Quem chega, entra na roda.</p>
+    </div>
+
+    <ol class="regras">
+      <li class="regra revela" style="--cor: var(--pulso)"><b>Toda curiosidade tem fonte.</b>O link fica no fim de cada pulso. Sem fonte boa, não sai.</li>
+      <li class="regra revela" style="--cor: var(--choque)"><b>Lenda é chamada de lenda.</b>Muita “curiosidade” da internet é mito. Quando for, a gente avisa.</li>
+      <li class="regra revela" style="--cor: var(--raio)"><b>Curto, mas certo.</b>Um pulso cabe em 30 segundos. A conta tem que fechar do mesmo jeito.</li>
+      <li class="regra revela" style="--cor: var(--brasa)"><b>IA ajuda, gente confere.</b>Vozes e animações usam IA. O texto e a checagem são nossos.</li>
+    </ol>
+
+    <div class="vem revela">
+      <h3 class="vem-titulo">No radar</h3>
+      <ul class="vem-lista">
+        <li><span>Vídeos no Instagram e no TikTok</span><i>em breve</i></li>
+        <li><span>Mais episódios do podcast</span><i>em produção</i></li>
+        <li><span>Cursos curtos de processos e automação</span><i>depois</i></li>
+      </ul>
+    </div>
+
+    <div class="chamada revela">
+      <p class="chamada-titulo">Sabe uma curiosidade boa?</p>
+      <p class="chamada-texto">Manda pra gente. Se tiver fonte, vira pulso, com crédito pra você.</p>
+      <a class="botao botao-escuro" href="mailto:guilherme.hellys1@gmail.com?subject=Curiosidade%20para%20a%20Pulsar">Mandar curiosidade</a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="rodape-palavra" aria-hidden="true">Pulsar</p>
+  <div class="rodape-linha">
+    <p>Uma marca do <a href="https://hellys-cpu.github.io/pleiade/">grupo Plêiade</a>. Podcast produzido com a <a href="https://hellys.dev.br/" target="_blank" rel="noopener">hellys.</a></p>
+    <p class="rodape-nota">© 2026 · feito à mão, em HTML puro</p>
+  </div>
+</footer>
+</body>
+</html>
