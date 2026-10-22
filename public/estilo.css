@@ -352,8 +352,9 @@ button { font: inherit; color: inherit; }
   background: var(--q-fundo, var(--noite)); color: var(--q-cor, var(--texto));
 }
 .quadro p { margin: 0; }
-.q-grande { font: 900 2.7rem/.92 var(--f-display); letter-spacing: -.04em; text-transform: uppercase; overflow-wrap: anywhere; }
-.q-grande.medio { font-size: 1.9rem; line-height: 1; }
+.celular-tela { container-type: inline-size; }
+.q-grande { font: 900 2.3rem/.92 var(--f-display); font-size: 10.8cqi; letter-spacing: -.04em; text-transform: uppercase; }
+.q-grande.medio { font-size: 1.6rem; font-size: 9cqi; line-height: 1; }
 .q-grande i { font-style: normal; color: var(--raio); }
 .q-sub {
   justify-self: center; padding: 8px 14px; border-radius: 999px;
