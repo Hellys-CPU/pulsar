@@ -386,7 +386,9 @@
     function ondas(agora) {
       for (var k = aneis.length - 1; k >= 0; k--) {
         var a = aneis[k];
-        var p = (agora - a.t) / a.dur;
+        // o clique marca a hora com performance.now(), que pode passar um pouco da hora do quadro:
+        // sem o piso em 0, o raio sai negativo, o arc() dá erro e a animação para
+        var p = Math.max(0, (agora - a.t) / a.dur);
         if (p >= 1) { aneis.splice(k, 1); continue; }
         ctx.strokeStyle = "rgba(" + a.cor + "," + ((1 - p) * .6).toFixed(3) + ")";
         ctx.lineWidth = 2.6 * (1 - p) + .4;
@@ -446,8 +448,9 @@
 
     function quadro(agora) {
       if (!rodando) return;
-      desenhar(agora);
+      // pede o próximo quadro antes de desenhar: um erro num quadro não congela o céu
       requestAnimationFrame(quadro);
+      desenhar(agora);
     }
     function ligar() {
       if (rodando || reduzir.matches) return;
