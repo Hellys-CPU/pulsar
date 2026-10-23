@@ -22,10 +22,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@500;700;900&display=swap">
 <link rel="stylesheet" href="estilo.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>
+(function () {
+  var h = document.documentElement;
+  h.classList.add("js");
+  // A abertura roda uma vez por visita; nunca para quem pede menos movimento nem quando o link aponta para uma parte da página
+  try {
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches && !location.hash && sessionStorage.getItem("pulsar:abertura") !== "vista") {
+      h.classList.add("com-abertura");
+      setTimeout(function () { h.classList.remove("com-abertura"); }, 8000); // rede de segurança se o site.js não carregar
+    }
+  } catch (e) {}
+})();
+</script>
 <script src="site.js" defer></script>
 </head>
 <body>
+<div class="abertura">
+  <canvas class="abertura-ceu" aria-hidden="true"></canvas>
+  <p class="abertura-rotulo" aria-hidden="true">PSR B1919+21 · gravando o sinal</p>
+  <p class="abertura-palavra" aria-hidden="true"><span style="--i:0">P</span><span style="--i:1">U</span><span style="--i:2">L</span><span style="--i:3">S</span><span style="--i:4">A</span><span style="--i:5">R</span></p>
+  <button class="abertura-pular" type="button">Pular abertura</button>
+</div>
 <a class="pular" href="#pulsos">Pular para as curiosidades</a>
 
 <header class="topo">

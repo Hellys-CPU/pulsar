@@ -32,6 +32,186 @@
 
   function avisarTodos(nome) { document.dispatchEvent(new CustomEvent(nome)); }
 
+  // ---------- abertura: o radiotelescópio grava o pulsar, linha por linha, até a estrela acender ----------
+  // Cada linha é uma volta do pulsar (como no gráfico de 1967); a pena do registrador desenha da esquerda
+  // para a direita. Depois a estrela acende, PULSAR entra letra por letra e a abertura sai. Uns 4,5 s;
+  // um clique ou uma tecla pula. O <head> só liga a abertura uma vez por visita e nunca com menos movimento.
+  parte("abertura", function () {
+    var raiz = document.documentElement;
+    var caixa = document.querySelector(".abertura");
+    if (!caixa || !raiz.classList.contains("com-abertura")) return;
+    var tela = caixa.querySelector(".abertura-ceu");
+    var ctx = tela.getContext("2d");
+    var PONTOS = 120;
+    var LINHAS = window.innerWidth < 720 ? 18 : 26;
+    var PRIMEIRA = 0.3;
+    var PASSO = 2.1 / LINHAS;
+    var ESTRELA = PRIMEIRA + LINHAS * PASSO;   // a estrela acende quando a última linha termina
+    var PALAVRA = ESTRELA + 0.3;
+    var SAIDA = PALAVRA + 1.05;
+    var FIM = SAIDA + 0.55;
+    var L = 0, A = 0;
+    var t0 = performance.now();
+    var palavraFoi = false, saiu = false;
+
+    var linhas = [];
+    for (var k = 0; k < LINHAS; k++) {
+      var meio = 0.5 + (Math.random() - 0.5) * 0.03;
+      var amp = 0.35 + Math.random() * 0.65;
+      var larg = 0.022 + Math.random() * 0.014;
+      var pts = new Float32Array(PONTOS + 1);
+      var ruido = 0;
+      for (var i = 0; i <= PONTOS; i++) {
+        var x = i / PONTOS;
+        var d = (x - meio) / larg;
+        ruido = ruido * 0.55 + (Math.random() - 0.5) * 0.09;
+        pts[i] = amp * Math.exp(-d * d) + ruido * (0.25 + 0.75 * Math.exp(-Math.pow((x - meio) / 0.22, 2)));
+      }
+      linhas.push(pts);
+    }
+
+    function medir() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      L = window.innerWidth;
+      A = window.innerHeight;
+      tela.width = Math.round(L * dpr);
+      tela.height = Math.round(A * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function desenhar(seg) {
+      ctx.fillStyle = "#08070d";
+      ctx.fillRect(0, 0, L, A);
+      var largo = L >= 720;
+      var x0 = L * (largo ? 0.22 : 0.06);
+      var largura = L * (largo ? 0.56 : 0.88);
+      var topo = A * 0.3;
+      var base = A * 0.58;
+      var passoY = (base - topo) / (LINHAS - 1);
+      var alto = passoY * 5;
+      var degrade = ctx.createLinearGradient(x0, 0, x0 + largura, 0);
+      degrade.addColorStop(0, "rgba(228,255,58,0)");
+      degrade.addColorStop(0.14, "rgba(228,255,58,1)");
+      degrade.addColorStop(0.86, "rgba(228,255,58,1)");
+      degrade.addColorStop(1, "rgba(228,255,58,0)");
+      var feitas = Math.max(0, Math.min(LINHAS, (seg - PRIMEIRA) / PASSO));
+      var caneta = null;
+      ctx.lineJoin = "round";
+      for (var k = 0; k < Math.ceil(feitas); k++) {
+        var pts = linhas[k];
+        var y = topo + k * passoY;
+        var ate = Math.max(1, Math.floor(Math.min(1, feitas - k) * PONTOS));
+        var ultima = k === Math.ceil(feitas) - 1 && feitas < LINHAS;
+        ctx.beginPath();
+        for (var i = 0; i <= ate; i++) {
+          var px = x0 + (i / PONTOS) * largura;
+          var py = y - pts[i] * alto;
+          if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+        }
+        var fimX = x0 + (ate / PONTOS) * largura;
+        ctx.lineTo(fimX, y + passoY);
+        ctx.lineTo(x0, y + passoY);
+        ctx.closePath();
+        ctx.fillStyle = "#08070d";
+        ctx.fill();
+        ctx.beginPath();
+        for (var j = 0; j <= ate; j++) {
+          var qx = x0 + (j / PONTOS) * largura;
+          var qy = y - pts[j] * alto;
+          if (j) ctx.lineTo(qx, qy); else ctx.moveTo(qx, qy);
+        }
+        ctx.strokeStyle = ultima ? "#ff2d8a" : degrade;
+        ctx.lineWidth = ultima ? 2.4 : 1.6;
+        ctx.globalAlpha = 0.35 + 0.65 * ((k + 1) / LINHAS);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        if (ultima) caneta = { x: fimX, y: y - pts[ate] * alto };
+      }
+      if (caneta) {
+        ctx.fillStyle = "#e4ff3a";
+        ctx.beginPath();
+        ctx.arc(caneta.x, caneta.y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (seg > ESTRELA) {
+        var e = seg - ESTRELA;
+        var cx = x0 + largura / 2;
+        var cy = A * 0.2;
+        var f = (e % (PERIODO / 1000)) / (PERIODO / 1000);
+        var ang = Math.PI * 0.62 + f * Math.PI * 2;
+        var acende = Math.min(1, e * 4);
+        ctx.save();
+        ctx.globalCompositeOperation = "lighter";
+        var comp = Math.hypot(L, A) * 0.75;
+        for (var b = 0; b < 2; b++) {
+          var a = ang + b * Math.PI;
+          var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, comp);
+          g.addColorStop(0, "rgba(228,255,58," + (0.34 * acende).toFixed(3) + ")");
+          g.addColorStop(0.3, "rgba(228,255,58," + (0.08 * acende).toFixed(3) + ")");
+          g.addColorStop(1, "rgba(228,255,58,0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, comp, a - 0.07, a + 0.07);
+          ctx.closePath();
+          ctx.fill();
+        }
+        var brilho = Math.exp(-e * 3);
+        var halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, 160 + brilho * 260);
+        halo.addColorStop(0, "rgba(228,255,58," + (0.5 + brilho * 0.4).toFixed(3) + ")");
+        halo.addColorStop(0.3, "rgba(255,45,138," + (0.15 + brilho * 0.2).toFixed(3) + ")");
+        halo.addColorStop(1, "rgba(255,45,138,0)");
+        ctx.fillStyle = halo;
+        ctx.fillRect(cx - 500, cy - 500, 1000, 1000);
+        ctx.restore();
+        ctx.strokeStyle = "rgba(228,255,58," + (Math.max(0, 1 - e * 1.5) * 0.7).toFixed(3) + ")";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 8 + e * 600, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = "#fbffe2";
+        ctx.beginPath();
+        ctx.arc(cx, cy, (8 + brilho * 10) * acende, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    var acabou = false;
+    function terminar() {
+      if (acabou) return;
+      acabou = true;
+      raiz.classList.remove("com-abertura");
+      try { sessionStorage.setItem("pulsar:abertura", "vista"); } catch (e) {}
+      window.removeEventListener("keydown", sair);
+    }
+    // Sai na hora (botão, clique ou tecla) sem esperar o próximo quadro
+    function sair() {
+      if (saiu) return;
+      saiu = true;
+      caixa.classList.add("saindo");
+      setTimeout(terminar, (FIM - SAIDA) * 1000);
+    }
+
+    function quadro(agora) {
+      if (acabou) return;
+      var seg = (agora - t0) / 1000;
+      if (!palavraFoi && seg >= PALAVRA) {
+        palavraFoi = true;
+        caixa.classList.add("palavra-entra");
+      }
+      if (seg >= SAIDA) sair();
+      desenhar(Math.min(seg, FIM));
+      requestAnimationFrame(quadro);
+    }
+
+    medir();
+    window.addEventListener("resize", medir);
+    caixa.addEventListener("click", sair);
+    window.addEventListener("keydown", sair);
+    requestAnimationFrame(quadro);
+  });
+
   // ---------- topo ganha fundo quando a página rola ----------
   parte("topo", function () {
     var topo = document.querySelector(".topo");
