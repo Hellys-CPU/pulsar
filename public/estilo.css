@@ -341,7 +341,7 @@ a.card-compartilhar { display: inline-flex; align-items: center; text-decoration
 }
 .celular-video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--noite); }
 .celular-legenda {
-  display: grid; justify-items: center; gap: 4px; text-align: center;
+  display: grid; justify-items: center; gap: 4px; text-align: center; margin-top: 14px;
   font: 700 .95rem/1.2 var(--f-display); text-transform: uppercase; letter-spacing: .01em;
 }
 .celular-legenda span { font: 500 .72rem/1.3 var(--f-mono); letter-spacing: .1em; color: var(--apagado); }
