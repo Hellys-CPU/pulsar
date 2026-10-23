@@ -98,7 +98,7 @@
           <p>Entre o fim dos anos 1980 e o começo dos 1990, Isamu Akasaki e Hiroshi Amano, em Nagoya, e Shuji Nakamura, na Nichia, uma empresa química pequena do Japão, conseguiram. Com o azul, dá pra fazer luz branca: é só cobrir o LED com um fósforo amarelo. Daí vieram as lâmpadas de LED e a luz por trás de muita tela que você usa.</p>
           <p>Os três levaram o Nobel de Física de 2014, pela invenção do LED azul eficiente.</p>
           <p class="fonte">Fonte: <a href="https://www.nobelprize.org/prizes/physics/2014/press-release/" target="_blank" rel="noopener">comunicado do Prêmio Nobel de Física de 2014</a></p>
-          <div class="card-acoes"><button class="card-compartilhar" type="button">Compartilhar</button></div>
+          <div class="card-acoes"><a class="card-compartilhar" href="#videos">Ver o vídeo</a><button class="card-compartilhar" type="button">Compartilhar</button></div>
         </div></div>
         <span class="card-mais" aria-hidden="true">+</span>
       </li>
@@ -267,18 +267,15 @@
     <div class="videos-grade">
       <div class="secao-topo revela">
         <p class="kicker">03 · Vídeos</p>
-        <h2 id="videos-titulo" class="titulo">30 segundos. <em>No talo.</em></h2>
-        <p class="sub">Cada pulso vira um vídeo curto, animado com IA e revisado por gente, com a mesma fonte do card. Os primeiros chegam em breve no Instagram e no TikTok.</p>
-        <p class="sub">Na tela do celular, uma prévia do estilo com o roteiro do LED azul.</p>
+        <h2 id="videos-titulo" class="titulo">Um minuto. <em>No talo.</em></h2>
+        <p class="sub">Cada pulso vira um vídeo curto: animado em código, narrado com voz de IA e com a mesma fonte do card. O primeiro já saiu, e logo chega ao Instagram e ao TikTok.</p>
+        <p class="sub">Pulso #001: por que um LED azul valeu um Nobel? A fonte está no <a href="#pulso-001">card do pulso</a>.</p>
       </div>
       <figure class="celular revela">
         <div class="celular-tela">
-          <div class="barrinhas" aria-hidden="true"></div>
-          <div class="quadro" aria-hidden="true"></div>
-          <span class="celular-selo" aria-hidden="true">prévia do estilo</span>
+          <video class="celular-video" src="videos/led-azul.mp4" poster="videos/led-azul.jpg" controls playsinline preload="none" aria-describedby="video-led-azul"></video>
         </div>
-        <button class="celular-pausa" type="button">Pausar prévia</button>
-        <figcaption class="sr">Prévia animada do estilo dos vídeos: frases curtas em cores fortes contando a história do LED azul, do vermelho e verde até o Nobel de 2014.</figcaption>
+        <figcaption id="video-led-azul" class="celular-legenda">Pulso #001 · LED azul<span>53 s · voz gerada por IA</span></figcaption>
       </figure>
     </div>
   </section>

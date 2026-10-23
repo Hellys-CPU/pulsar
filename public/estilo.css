@@ -231,7 +231,8 @@ button { font: inherit; color: inherit; }
 .card-corpo p { margin: 0 0 1em; max-width: 64ch; }
 .card-corpo a { text-underline-offset: 3px; position: relative; z-index: 1; }
 .fonte { font: 500 .8rem/1.6 var(--f-mono); }
-.card-acoes { display: flex; gap: 10px; position: relative; z-index: 1; }
+.card-acoes { display: flex; flex-wrap: wrap; gap: 10px; position: relative; z-index: 1; }
+a.card-compartilhar { display: inline-flex; align-items: center; text-decoration: none; }
 .card-compartilhar {
   padding: 9px 15px; border-radius: 999px; cursor: pointer;
   background: var(--tinta); color: var(--cor); border: 2px solid var(--tinta);
@@ -338,48 +339,12 @@ button { font: inherit; color: inherit; }
   background: var(--noite);
   box-shadow: 0 0 0 2px var(--linha), 14px 14px 0 var(--choque), 0 30px 90px rgba(255, 45, 138, .22);
 }
-.barrinhas { position: absolute; z-index: 3; top: 14px; left: 14px; right: 14px; display: flex; gap: 4px; }
-.barrinhas i { flex: 1; height: 3px; border-radius: 2px; overflow: hidden; background: rgba(255, 255, 255, .28); background: color-mix(in srgb, currentColor 28%, transparent); }
-.barrinhas b { display: block; width: 0; height: 100%; background: currentColor; }
-.barrinhas .foi b { width: 100%; }
-.barrinhas .agora b { animation: enche var(--batida) linear forwards; }
-.celular.pausado .barrinhas .agora b { animation-play-state: paused; }
-@keyframes enche { to { width: 100%; } }
-.quadro {
-  position: absolute; inset: 0;
-  display: grid; place-content: center; text-align: center; gap: 14px;
-  padding: 40px 20px;
-  background: var(--q-fundo, var(--noite)); color: var(--q-cor, var(--texto));
+.celular-video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--noite); }
+.celular-legenda {
+  display: grid; justify-items: center; gap: 4px; text-align: center;
+  font: 700 .95rem/1.2 var(--f-display); text-transform: uppercase; letter-spacing: .01em;
 }
-.quadro p { margin: 0; }
-.celular-tela { container-type: inline-size; }
-.q-grande { font: 900 2.3rem/.92 var(--f-display); font-size: 10.8cqi; letter-spacing: -.04em; text-transform: uppercase; }
-.q-grande.medio { font-size: 1.6rem; font-size: 9cqi; line-height: 1; }
-.q-grande i { font-style: normal; color: var(--raio); }
-.q-sub {
-  justify-self: center; padding: 8px 14px; border-radius: 999px;
-  background: var(--q-cor, var(--texto)); color: var(--q-fundo, var(--noite));
-  font: 700 .82rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .02em;
-}
-.quadro.entra .q-grande { animation: slam .5s cubic-bezier(.2, 1.5, .35, 1) both; }
-.quadro.entra .q-sub { animation: pop .4s cubic-bezier(.2, 1.8, .4, 1) .22s both; }
-.quadro.treme .q-grande { animation: slam .5s cubic-bezier(.2, 1.5, .35, 1) both, treme .12s linear .5s 4; }
-.quadro.brilho .q-grande { text-shadow: 0 0 .35em rgba(255, 220, 90, .9); }
-.quadro .q-marca { width: 74px; height: 74px; justify-self: center; fill: var(--pulso); }
-.quadro .q-marca .marca-feixes { animation: gira 2s linear infinite; }
-@keyframes slam { 0% { opacity: 0; transform: scale(2.3) rotate(-8deg); } 55% { opacity: 1; transform: scale(.93) rotate(2deg); } 100% { transform: none; } }
-@keyframes pop { 0% { opacity: 0; transform: scale(.4); } 100% { opacity: 1; transform: none; } }
-@keyframes treme { 25% { transform: translateX(-5px) rotate(-1deg); } 75% { transform: translateX(5px) rotate(1deg); } }
-.celular-selo {
-  position: absolute; z-index: 3; bottom: 16px; left: 50%; transform: translateX(-50%);
-  padding: 6px 10px; border-radius: 999px; background: rgba(8, 7, 13, .78); color: var(--texto);
-  font: 700 .62rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
-}
-.celular-pausa {
-  padding: 9px 16px; border-radius: 999px; cursor: pointer; background: none; border: 1.5px solid var(--linha);
-  font: 700 .72rem/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--apagado);
-}
-.celular-pausa:hover { border-color: var(--pulso); color: var(--pulso); }
+.celular-legenda span { font: 500 .72rem/1.3 var(--f-mono); letter-spacing: .1em; color: var(--apagado); }
 
 /* ---------- quem faz ---------- */
 .regras {

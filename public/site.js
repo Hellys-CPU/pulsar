@@ -388,6 +388,7 @@
     });
     aoPulsar.push(function () { if (ligado && !document.hidden) estalo(); });
     document.addEventListener("pulsar:podcast-tocando", function () { if (ligado) definir(false); });
+    document.addEventListener("pulsar:video-tocando", function () { if (ligado) definir(false); });
   });
 
   // ---------- pulsos: os cards de curiosidade ----------
@@ -430,7 +431,7 @@
       card.addEventListener("animationend", function (ev) {
         if (ev.target === card && ev.animationName === "estoura") card.classList.remove("estoura");
       });
-      var comp = card.querySelector(".card-compartilhar");
+      var comp = card.querySelector("button.card-compartilhar");
       comp.addEventListener("click", function () { compartilhar(card, comp); });
     });
 
@@ -751,68 +752,19 @@
     audio.addEventListener("play", function () { if (reduzir.matches) desenhar(performance.now()); });
   });
 
-  // ---------- prévia dos vídeos: um quadro por batida ----------
-  parte("prévia", function () {
-    var fig = document.querySelector(".celular");
-    var quadro = fig.querySelector(".quadro");
-    var barras = fig.querySelector(".barrinhas");
-    var botao = fig.querySelector(".celular-pausa");
-    var MARCA = '<svg class="q-marca" viewBox="0 0 32 32" aria-hidden="true"><g class="marca-feixes"><path d="M16 16 25.5 2.5 29.5 6.5Z M16 16 6.5 29.5 2.5 25.5Z"/></g><circle cx="16" cy="16" r="4.6"/></svg>';
-    var QUADROS = [
-      { fundo: "#08070d", cor: "#f6f4ff", grande: "Por que o LED <i>azul</i> valeu um Nobel?", medio: true },
-      { fundo: "#ff2d8a", cor: "#08070d", grande: "Vermelho", sub: "anos 60 ✓" },
-      { fundo: "#e4ff3a", cor: "#08070d", grande: "Verde", sub: "depois ✓" },
-      { fundo: "#08070d", cor: "#2de2ff", grande: "Azul", sub: "30 anos travado", efeito: "treme" },
-      { fundo: "#2de2ff", cor: "#08070d", grande: "3 cientistas no Japão", medio: true },
-      { fundo: "#ff7a1a", cor: "#08070d", grande: "+ nitreto de gálio", medio: true },
-      { fundo: "#fffbea", cor: "#08070d", grande: "= luz branca", medio: true, efeito: "brilho" },
-      { fundo: "#e4ff3a", cor: "#08070d", grande: "Nobel", sub: "de Física · 2014" },
-      { fundo: "#08070d", cor: "#e4ff3a", grande: "Pulsar", sub: "curiosidades em pulsos", marca: true }
-    ];
-    var atual = -1, tocando = !reduzir.matches, naTela = false;
-
-    barras.innerHTML = QUADROS.map(function () { return "<i><b></b></i>"; }).join("");
-    var tracos = barras.children;
-
-    function mostrar(i) {
-      var q = QUADROS[i];
-      atual = i;
-      quadro.style.setProperty("--q-fundo", q.fundo);
-      quadro.style.setProperty("--q-cor", q.cor);
-      barras.style.color = q.cor;
-      quadro.className = "quadro";
-      quadro.innerHTML = (q.marca ? MARCA : "") +
-        '<p class="q-grande' + (q.medio ? " medio" : "") + '">' + q.grande + "</p>" +
-        (q.sub ? '<p class="q-sub">' + q.sub + "</p>" : "");
-      if (q.efeito === "brilho") quadro.classList.add("brilho");
-      if (!reduzir.matches) {
-        void quadro.offsetWidth;
-        quadro.classList.add("entra");
-        if (q.efeito === "treme") quadro.classList.add("treme");
-      }
-      for (var k = 0; k < tracos.length; k++) {
-        tracos[k].className = k < i ? "foi" : "";
-      }
-      void barras.offsetWidth;
-      tracos[i].className = "agora";
-    }
-
-    function definir(on) {
-      tocando = on;
-      fig.classList.toggle("pausado", !on);
-      botao.textContent = on ? "Pausar prévia" : "Tocar prévia";
-    }
-
-    aoPulsar.push(function () {
-      if (tocando && naTela && !document.hidden) mostrar((atual + 1) % QUADROS.length);
+  // ---------- vídeos: um som de cada vez (vídeo, podcast e o estalo do pulsar não se atropelam) ----------
+  parte("vídeos", function () {
+    var videos = Array.prototype.slice.call(document.querySelectorAll(".celular-video"));
+    var podcast = document.querySelector(".player-audio");
+    videos.forEach(function (video) {
+      video.addEventListener("play", function () {
+        if (podcast && !podcast.paused) podcast.pause();
+        videos.forEach(function (outro) { if (outro !== video && !outro.paused) outro.pause(); });
+        avisarTodos("pulsar:video-tocando");
+      });
     });
-    botao.addEventListener("click", function () { definir(!tocando); });
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) { naTela = es[0].isIntersecting; }, { threshold: .35 }).observe(fig);
-    } else {
-      naTela = true;
-    }
-    definir(tocando);
-    mostrar(0);
+    document.addEventListener("pulsar:podcast-tocando", function () {
+      videos.forEach(function (video) { if (!video.paused) video.pause(); });
+    });
   });
 })();
