@@ -423,7 +423,7 @@ a.card-compartilhar { display: inline-flex; align-items: center; text-decoration
 .rodape-nota { font: 500 .78rem/1.6 var(--f-mono); }
 
 /* ---------- telas menores ---------- */
-.videos-seguir { margin: 28px 0 0; }
+.videos-seguir { margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 14px 18px; }
 @media (max-width: 860px) {
   .player { grid-template-columns: minmax(0, 1fr); }
   .player-palco { max-width: 260px; }
