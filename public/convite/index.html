@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convite · Pulsar</title>
+<meta name="description" content="Você foi convidado para acompanhar a Pulsar: curiosidades de tecnologia que piscam, explicadas do zero e sempre com fonte. Siga no TikTok e no Instagram.">
+<meta name="theme-color" content="#08070d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pulsar">
+<meta property="og:title" content="Você foi convidado(a) para a Pulsar ✦">
+<meta property="og:description" content="Curiosidades de tecnologia que piscam, explicadas do zero e sempre com fonte. TikTok @opulsar · Instagram @opulsar.br">
+<meta property="og:url" content="https://opulsar.com.br/convite/">
+<meta property="og:image" content="https://opulsar.com.br/convite/convite-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308070d'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23e4ff3a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;700;800&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@700;900&display=swap">
+<style>
+/* Cartão de convite da Pulsar: um ingresso para acompanhar os pulsos no TikTok e no Instagram.
+   Abre com o pulsar piscando no ritmo do PSR B1919+21 (1,3373 s) e o cartão subindo; quem pede
+   menos movimento recebe tudo parado. ?exportar deixa pronto para virar imagem (sem abertura nem botão). */
+:root {
+  --noite: #08070d; --chumbo: #13111d; --linha: #2c2842; --texto: #f6f4ff; --apagado: #aaa4c6;
+  --pulso: #e4ff3a; --choque: #ff2d8a; --raio: #2de2ff; --tinta: #08070d; --batida: 1.3373s;
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--noite);
+  background-image:
+    radial-gradient(60% 40% at 10% 0%, rgba(228, 255, 58, .14), transparent 70%),
+    radial-gradient(60% 45% at 100% 100%, rgba(255, 45, 138, .2), transparent 70%),
+    radial-gradient(50% 40% at 0% 100%, rgba(75, 31, 209, .25), transparent 70%);
+  color: var(--texto);
+  font: 500 1rem/1.5 var(--f-texto);
+  display: grid; place-items: center;
+  min-height: 100vh; min-height: 100svh;
+  padding: 28px 16px 40px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--raio); outline-offset: 3px; border-radius: 8px; }
+
+.cartao {
+  width: min(420px, 100%);
+  background: linear-gradient(180deg, #16132a 0%, #0e0c1a 100%);
+  border: 1px solid var(--linha);
+  border-radius: 28px;
+  box-shadow: 10px 10px 0 var(--choque);
+  overflow: hidden;
+  position: relative;
+}
+
+/* topo: o pulsar e as linhas do registro */
+.ceu { position: relative; height: 250px; overflow: hidden; }
+.ceu svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.feixes { transform-origin: 210px 92px; animation: gira calc(var(--batida) * 2) linear infinite; }
+@keyframes gira { to { transform: rotate(360deg); } }
+.miolo { animation: pisca var(--batida) ease-out infinite; transform-origin: 210px 92px; }
+@keyframes pisca { 0% { transform: scale(1.5); } 30%, 100% { transform: scale(1); } }
+.ultima { animation: bate var(--batida) ease-out infinite; transform-origin: 50% 100%; }
+@keyframes bate { 0% { transform: scaleY(1.35); } 35%, 100% { transform: scaleY(1); } }
+
+.cabeca { padding: 0 26px 22px; text-align: center; }
+.selo { display: inline-block; font: 700 .72rem/1 var(--f-mono); letter-spacing: .14em; color: var(--pulso);
+  border: 1px solid rgba(228, 255, 58, .45); border-radius: 999px; padding: 8px 14px; margin: 0 0 18px; }
+.marca { font: 900 clamp(2.6rem, 13vw, 3.6rem)/.95 var(--f-display); letter-spacing: .01em; margin: 0;
+  text-shadow: 4px 4px 0 var(--choque); }
+.convite { font: 800 1.25rem/1.3 var(--f-texto); margin: 18px 0 6px; }
+.sub { color: var(--apagado); margin: 0; font-size: .98rem; }
+.sub b { color: var(--tinta); background: var(--pulso); padding: 0 .3em; border-radius: 4px; font-weight: 800; }
+
+/* picote do ingresso */
+.picote { position: relative; height: 0; border-top: 2px dashed var(--linha); margin: 6px 0 0; }
+.picote::before, .picote::after { content: ""; position: absolute; top: -15px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--noite); border: 1px solid var(--linha); }
+.picote::before { left: -15px; } .picote::after { right: -15px; }
+
+.redes { padding: 22px 22px 8px; display: grid; gap: 14px; }
+.rede { display: grid; grid-template-columns: 104px 1fr; gap: 16px; align-items: center;
+  background: rgba(255, 255, 255, .03); border: 1px solid var(--linha); border-radius: 20px; padding: 12px; }
+.qr { width: 104px; height: 104px; background: var(--pulso); border-radius: 14px; padding: 9px; }
+.rede.ig .qr { background: var(--texto); }
+.qr svg { width: 100%; height: 100%; }
+.qr path { fill: var(--tinta); }
+.onde { font: 700 .7rem/1 var(--f-mono); letter-spacing: .14em; color: var(--apagado); margin: 0 0 6px; }
+.arroba { font: 900 1.15rem/1.15 var(--f-display); margin: 0 0 10px; word-break: break-all; }
+.botao { display: inline-flex; align-items: center; gap: .4em; text-decoration: none; font: 800 .9rem/1 var(--f-texto);
+  padding: 10px 14px; border-radius: 999px; border: 2px solid var(--pulso); background: var(--pulso); color: var(--tinta);
+  box-shadow: 3px 3px 0 var(--choque); transition: transform .15s ease, box-shadow .15s ease; }
+.botao:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--choque); }
+.rede.ig .botao { background: transparent; color: var(--texto); border-color: var(--texto); }
+
+.pe { padding: 14px 22px 24px; text-align: center; }
+.site { display: inline-block; font: 700 .95rem/1 var(--f-mono); color: var(--pulso); text-decoration: none; margin: 4px 0 14px; }
+.site:hover { text-decoration: underline; }
+.mandar { font: 800 .95rem/1 var(--f-texto); color: var(--texto); background: none; border: 2px dashed var(--linha);
+  border-radius: 999px; padding: 12px 18px; cursor: pointer; width: 100%; }
+.mandar:hover { border-color: var(--pulso); }
+.psr { margin: 14px 0 0; font: 500 .68rem/1.4 var(--f-mono); letter-spacing: .1em; color: #6f6a8c; }
+
+/* abertura: o pulsar acende, depois o cartão sobe e as partes entram em sequência */
+.anima .cartao { animation: sobe .9s cubic-bezier(.16, 1, .3, 1) .35s both; }
+.anima .cabeca > *, .anima .rede, .anima .pe > * { animation: entra .7s cubic-bezier(.16, 1, .3, 1) both; }
+.anima .selo { animation-delay: .7s; } .anima .marca { animation-delay: .78s; } .anima .convite { animation-delay: .86s; }
+.anima .sub { animation-delay: .92s; } .anima .rede:nth-child(1) { animation-delay: 1s; } .anima .rede:nth-child(2) { animation-delay: 1.08s; }
+.anima .pe > * { animation-delay: 1.16s; }
+.anima .flash { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 30%, rgba(228,255,58,.55), transparent 60%);
+  animation: flash .8s ease-out both; }
+@keyframes sobe { from { opacity: 0; transform: translateY(60px) rotate(-2deg); } to { opacity: 1; transform: none; } }
+@keyframes entra { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes flash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .feixes, .miolo, .ultima { animation: none; }
+  .anima .cartao, .anima .cabeca > *, .anima .rede, .anima .pe > *, .anima .flash { animation: none; }
+  .anima .flash { display: none; }
+}
+/* exportar como imagem: tamanho de Stories, sem botão de mandar e sem abertura */
+.exportar body { padding: 0; min-height: 960px; height: 960px; width: 540px; }
+.exportar .mandar { display: none; }
+.exportar .flash { display: none; }
+.exportar .cartao { zoom: .9; }
+/* prévia de link (1200×630): o cartão menor à direita e a chamada à esquerda */
+.chamada-og { display: none; }
+.og body { width: 1200px; height: 630px; min-height: 0; padding: 0 70px; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+.og .chamada-og { display: block; max-width: 640px; }
+.og .chamada-og h2 { font: 900 3.4rem/1.02 var(--f-display); margin: 18px 0 22px; text-shadow: 4px 4px 0 var(--choque); }
+.og .chamada-og p { margin: 0 0 10px; font: 700 1.5rem/1.3 var(--f-texto); }
+.og .chamada-og .url { font: 700 1.3rem/1 var(--f-mono); color: var(--pulso); margin-top: 22px; }
+.og .cartao { zoom: .58; flex: none; }
+.og .mandar, .og .flash { display: none; }
+</style>
+</head>
+<body>
+<div class="flash" aria-hidden="true"></div>
+<div class="chamada-og" aria-hidden="true">
+  <p class="selo">CONVITE · PSR B1919+21</p>
+  <h2>Você foi convidado(a) para a Pulsar</h2>
+  <p>Curiosidades de tecnologia que piscam, sempre com fonte.</p>
+  <p>TikTok @opulsar · Instagram @opulsar.br</p>
+  <p class="url">opulsar.com.br</p>
+</div>
+<main class="cartao" aria-labelledby="titulo">
+  <div class="ceu" aria-hidden="true">
+    <svg viewBox="0 0 420 250" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="halo"><stop offset="0" stop-color="#e4ff3a" stop-opacity=".75"/><stop offset=".4" stop-color="#ff2d8a" stop-opacity=".25"/><stop offset="1" stop-color="#ff2d8a" stop-opacity="0"/></radialGradient>
+        <linearGradient id="feixe" x1="0" x2="1"><stop offset="0" stop-color="#e4ff3a" stop-opacity=".85"/><stop offset="1" stop-color="#e4ff3a" stop-opacity="0"/></linearGradient>
+        <linearGradient id="borda" x1="0" x2="1"><stop offset="0" stop-color="#e4ff3a" stop-opacity="0"/><stop offset=".18" stop-color="#e4ff3a"/><stop offset=".82" stop-color="#e4ff3a"/><stop offset="1" stop-color="#e4ff3a" stop-opacity="0"/></linearGradient>
+      </defs>
+      <g class="feixes">
+        <path d="M210 92 L640 40 L640 144 Z" fill="url(#feixe)" opacity=".5"/>
+        <path d="M210 92 L640 82 L640 102 Z" fill="url(#feixe)"/>
+        <path d="M210 92 L-220 144 L-220 40 Z" fill="url(#feixe)" opacity=".5" transform="rotate(0 210 92)"/>
+        <path d="M210 92 L-220 102 L-220 82 Z" fill="url(#feixe)"/>
+      </g>
+      <circle cx="210" cy="92" r="70" fill="url(#halo)"/>
+      <g class="miolo"><circle cx="210" cy="92" r="9" fill="#fbffe2"/></g>
+      <g id="registro"></g>
+    </svg>
+  </div>
+  <header class="cabeca">
+    <p class="selo">CONVITE · PSR B1919+21</p>
+    <h1 class="marca" id="titulo">PULSAR</h1>
+    <p class="convite">Você foi convidado(a) para o próximo pulso.</p>
+    <p class="sub">Curiosidades de tecnologia que piscam: explicadas do zero, <b>sempre com fonte</b>.</p>
+  </header>
+  <div class="picote" aria-hidden="true"></div>
+  <section class="redes" aria-label="Onde acompanhar">
+    <div class="rede tt">
+      <div class="qr" role="img" aria-label="QR code do TikTok @opulsar"><svg viewBox="0 0 29 29" shape-rendering="crispEdges"><path d="M0 0h7v1h-7zM9 0h2v1h-2zM12 0h1v1h-1zM16 0h1v1h-1zM18 0h3v1h-3zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM11 1h2v1h-2zM14 1h1v1h-1zM18 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM16 2h1v1h-1zM18 2h3v1h-3zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h2v1h-2zM13 3h2v1h-2zM17 3h2v1h-2zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM11 4h2v1h-2zM15 4h2v1h-2zM19 4h1v1h-1zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM14 5h1v1h-1zM18 5h3v1h-3zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM9 7h3v1h-3zM13 7h2v1h-2zM16 7h2v1h-2zM19 7h1v1h-1zM1 8h3v1h-3zM5 8h2v1h-2zM10 8h1v1h-1zM12 8h1v1h-1zM15 8h1v1h-1zM17 8h4v1h-4zM26 8h2v1h-2zM0 9h1v1h-1zM2 9h2v1h-2zM5 9h1v1h-1zM7 9h3v1h-3zM11 9h1v1h-1zM14 9h1v1h-1zM16 9h2v1h-2zM19 9h4v1h-4zM24 9h1v1h-1zM26 9h1v1h-1zM28 9h1v1h-1zM1 10h1v1h-1zM6 10h1v1h-1zM11 10h1v1h-1zM13 10h2v1h-2zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM25 10h1v1h-1zM27 10h1v1h-1zM1 11h1v1h-1zM7 11h4v1h-4zM12 11h1v1h-1zM19 11h1v1h-1zM23 11h3v1h-3zM28 11h1v1h-1zM0 12h10v1h-10zM11 12h1v1h-1zM13 12h5v1h-5zM20 12h2v1h-2zM23 12h1v1h-1zM26 12h3v1h-3zM0 13h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM8 13h1v1h-1zM10 13h2v1h-2zM15 13h1v1h-1zM17 13h3v1h-3zM22 13h2v1h-2zM25 13h2v1h-2zM28 13h1v1h-1zM0 14h1v1h-1zM4 14h1v1h-1zM6 14h1v1h-1zM9 14h5v1h-5zM16 14h2v1h-2zM19 14h3v1h-3zM23 14h3v1h-3zM27 14h2v1h-2zM3 15h1v1h-1zM8 15h2v1h-2zM13 15h3v1h-3zM19 15h2v1h-2zM22 15h1v1h-1zM24 15h2v1h-2zM28 15h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h3v1h-3zM13 16h1v1h-1zM18 16h1v1h-1zM21 16h1v1h-1zM23 16h3v1h-3zM27 16h2v1h-2zM3 17h3v1h-3zM9 17h1v1h-1zM12 17h1v1h-1zM16 17h1v1h-1zM20 17h1v1h-1zM22 17h2v1h-2zM26 17h1v1h-1zM0 18h1v1h-1zM3 18h1v1h-1zM5 18h5v1h-5zM12 18h1v1h-1zM14 18h2v1h-2zM20 18h1v1h-1zM22 18h2v1h-2zM26 18h1v1h-1zM4 19h1v1h-1zM7 19h1v1h-1zM10 19h3v1h-3zM17 19h1v1h-1zM19 19h1v1h-1zM21 19h2v1h-2zM24 19h5v1h-5zM1 20h2v1h-2zM4 20h4v1h-4zM10 20h3v1h-3zM17 20h2v1h-2zM20 20h8v1h-8zM8 21h1v1h-1zM10 21h2v1h-2zM16 21h1v1h-1zM18 21h3v1h-3zM24 21h2v1h-2zM27 21h2v1h-2zM0 22h7v1h-7zM11 22h1v1h-1zM13 22h2v1h-2zM16 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM26 22h2v1h-2zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h5v1h-5zM15 23h2v1h-2zM18 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM10 24h2v1h-2zM14 24h1v1h-1zM17 24h1v1h-1zM20 24h7v1h-7zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM8 25h3v1h-3zM13 25h2v1h-2zM18 25h2v1h-2zM24 25h1v1h-1zM26 25h2v1h-2zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM12 26h3v1h-3zM16 26h1v1h-1zM20 26h1v1h-1zM23 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h6v1h-6zM20 27h2v1h-2zM24 27h2v1h-2zM27 27h1v1h-1zM0 28h7v1h-7zM9 28h1v1h-1zM11 28h3v1h-3zM18 28h3v1h-3zM23 28h1v1h-1zM27 28h1v1h-1z"/></svg></div>
+      <div>
+        <p class="onde">TIKTOK</p>
+        <p class="arroba">@opulsar</p>
+        <a class="botao" href="https://www.tiktok.com/@opulsar" target="_blank" rel="noopener">Seguir ↗</a>
+      </div>
+    </div>
+    <div class="rede ig">
+      <div class="qr" role="img" aria-label="QR code do Instagram @opulsar.br"><svg viewBox="0 0 29 29" shape-rendering="crispEdges"><path d="M0 0h7v1h-7zM11 0h3v1h-3zM18 0h3v1h-3zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM11 1h5v1h-5zM17 1h2v1h-2zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM14 2h1v1h-1zM19 2h2v1h-2zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h5v1h-5zM15 3h3v1h-3zM19 3h1v1h-1zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM12 4h1v1h-1zM16 4h4v1h-4zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h2v1h-2zM15 5h1v1h-1zM17 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM20 7h1v1h-1zM0 8h1v1h-1zM2 8h5v1h-5zM9 8h1v1h-1zM11 8h1v1h-1zM15 8h1v1h-1zM17 8h1v1h-1zM19 8h1v1h-1zM22 8h5v1h-5zM0 9h4v1h-4zM5 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM11 9h3v1h-3zM16 9h9v1h-9zM28 9h1v1h-1zM0 10h1v1h-1zM2 10h6v1h-6zM9 10h3v1h-3zM13 10h3v1h-3zM20 10h3v1h-3zM0 11h2v1h-2zM5 11h1v1h-1zM9 11h2v1h-2zM12 11h2v1h-2zM16 11h1v1h-1zM23 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM3 12h1v1h-1zM6 12h1v1h-1zM9 12h1v1h-1zM14 12h1v1h-1zM17 12h2v1h-2zM25 12h2v1h-2zM3 13h1v1h-1zM7 13h2v1h-2zM10 13h3v1h-3zM17 13h6v1h-6zM24 13h1v1h-1zM28 13h1v1h-1zM1 14h2v1h-2zM5 14h3v1h-3zM11 14h2v1h-2zM15 14h1v1h-1zM17 14h1v1h-1zM22 14h2v1h-2zM25 14h2v1h-2zM0 15h1v1h-1zM2 15h1v1h-1zM4 15h1v1h-1zM8 15h1v1h-1zM12 15h1v1h-1zM14 15h1v1h-1zM19 15h1v1h-1zM21 15h4v1h-4zM27 15h1v1h-1zM2 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM9 16h1v1h-1zM11 16h2v1h-2zM15 16h3v1h-3zM20 16h1v1h-1zM23 16h1v1h-1zM25 16h2v1h-2zM0 17h2v1h-2zM9 17h1v1h-1zM13 17h2v1h-2zM16 17h5v1h-5zM22 17h3v1h-3zM26 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM5 18h2v1h-2zM8 18h1v1h-1zM11 18h1v1h-1zM13 18h5v1h-5zM20 18h2v1h-2zM23 18h1v1h-1zM26 18h1v1h-1zM0 19h1v1h-1zM2 19h4v1h-4zM8 19h6v1h-6zM15 19h1v1h-1zM19 19h2v1h-2zM22 19h3v1h-3zM27 19h1v1h-1zM0 20h1v1h-1zM2 20h1v1h-1zM4 20h1v1h-1zM6 20h2v1h-2zM10 20h1v1h-1zM12 20h1v1h-1zM14 20h2v1h-2zM17 20h1v1h-1zM20 20h5v1h-5zM26 20h3v1h-3zM8 21h1v1h-1zM10 21h3v1h-3zM16 21h1v1h-1zM20 21h1v1h-1zM24 21h5v1h-5zM0 22h7v1h-7zM9 22h1v1h-1zM11 22h1v1h-1zM15 22h2v1h-2zM18 22h3v1h-3zM22 22h1v1h-1zM24 22h3v1h-3zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h3v1h-3zM12 23h1v1h-1zM14 23h1v1h-1zM18 23h3v1h-3zM24 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h3v1h-3zM15 24h3v1h-3zM20 24h5v1h-5zM26 24h1v1h-1zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM8 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM19 25h1v1h-1zM23 25h1v1h-1zM25 25h4v1h-4zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM8 26h1v1h-1zM11 26h2v1h-2zM14 26h2v1h-2zM22 26h6v1h-6zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h2v1h-2zM12 27h1v1h-1zM15 27h2v1h-2zM20 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM0 28h7v1h-7zM8 28h1v1h-1zM11 28h3v1h-3zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM23 28h4v1h-4z"/></svg></div>
+      <div>
+        <p class="onde">INSTAGRAM</p>
+        <p class="arroba">@opulsar.br</p>
+        <a class="botao" href="https://www.instagram.com/opulsar.br/" target="_blank" rel="noopener">Seguir ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer class="pe">
+    <a class="site" href="https://opulsar.com.br/">opulsar.com.br · todos os pulsos</a>
+    <button class="mandar" type="button">Mandar este convite para alguém</button>
+    <p class="psr">O PULSAR QUE DÁ NOME À MARCA PISCA A CADA 1,337 S</p>
+  </footer>
+</main>
+<script>
+(function () {
+  var h = document.documentElement;
+  // ?exportar (Stories) e ?og (prévia de link) viram imagem: sem abertura animada
+  var og = location.search.split(/[?&]/).indexOf("og") >= 0;
+  var exportar = og || /[?&]exportar/.test(location.search);
+  if (og) h.classList.add("og");
+  if (exportar) h.classList.add("exportar");
+  else if (!matchMedia("(prefers-reduced-motion: reduce)").matches) h.classList.add("anima");
+  // as linhas empilhadas do PSR B1919+21, com sorteio fixo (o mesmo desenho sempre)
+  var s = 1919;
+  function sorte() { s = (s * 16807) % 2147483647; return s / 2147483647; }
+  function perfil(u) { var d = (u - .5) / .035, o = (u - .535) / .03; return Math.exp(-d * d) + .32 * Math.exp(-o * o); }
+  var g = document.getElementById("registro"), n = 9, topo = 140, base = 236, passo = (base - topo) / (n - 1), html = "";
+  for (var k = 0; k < n; k++) {
+    var y = topo + k * passo, amp = .55 + sorte() * .45, r = 0, pts = [];
+    for (var i = 0; i <= 120; i++) {
+      var u = i / 120;
+      r = r * .6 + (sorte() - .5) * .07;
+      pts.push((40 + u * 340).toFixed(1) + " " + (y - (perfil(u) * amp + r * (.3 + Math.exp(-Math.pow((u - .5) / .2, 2)))) * passo * 3.4).toFixed(1));
+    }
+    var linha = "M" + pts.join(" L");
+    html += '<path d="' + linha + ' L380 ' + (y + 12) + ' L40 ' + (y + 12) + ' Z" fill="#110f1f"/>' +
+            '<path class="' + (k === n - 1 ? "ultima" : "") + '" d="' + linha + '" fill="none" stroke="url(#borda)" stroke-width="2.4" stroke-linejoin="round"/>';
+  }
+  g.innerHTML = html;
+  // mandar o convite: o menu de compartilhar do celular; no computador, copia o link
+  var botao = document.querySelector(".mandar");
+  botao.addEventListener("click", function () {
+    var dados = { title: "Pulsar", text: "Te convidei para a Pulsar: curiosidades de tecnologia que piscam, sempre com fonte ✦", url: "https://opulsar.com.br/convite/" };
+    if (navigator.share) { navigator.share(dados).catch(function () {}); return; }
+    navigator.clipboard && navigator.clipboard.writeText(dados.url).then(function () {
+      botao.textContent = "Link copiado ✓";
+      setTimeout(function () { botao.textContent = "Mandar este convite para alguém"; }, 2200);
+    });
+  });
+})();
+</script>
+</body>
+</html>
